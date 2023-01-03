@@ -1,4 +1,4 @@
-package com.kodilla.bikes;
+package com.kodilla.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
