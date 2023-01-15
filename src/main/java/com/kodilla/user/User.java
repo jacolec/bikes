@@ -1,5 +1,7 @@
 package com.kodilla.user;
 
+import com.kodilla.bikes.Bike;
+import com.kodilla.rents.Rent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +20,7 @@ public class User {
     @GeneratedValue
     @NotNull
     @Column(name = "USER_ID", unique = true)
-    private int id;
+    private Long id;
     @Column(name = "FIRSTNAME")
     private String firstname;
     @Column(name = "LASTNAME")
@@ -28,4 +30,18 @@ public class User {
     @Column(name = "PHONE")
     private int phone;
 
+    @OneToOne
+    @JoinColumn(name = "BIKE_ID")
+    private Bike bike;
+
+    @OneToOne
+    @JoinColumn(name = "RENT_ID")
+    private Rent rent;
+
+    public User(String firstname, String lastname, String mail, int phone) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.mail = mail;
+        this.phone = phone;
+    }
 }

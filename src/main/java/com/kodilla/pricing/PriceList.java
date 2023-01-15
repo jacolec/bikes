@@ -1,22 +1,50 @@
 package com.kodilla.pricing;
 
-import java.math.BigDecimal;
-import java.util.Map;
+import com.kodilla.bikes.Bike;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.util.List;
+
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
+@Table(name = "PRICE_LIST")
 public class PriceList {
 
-    private static Map<BikeType, BigDecimal> professionalBikePrices = Map.of(
-            BikeType.RACING, new BigDecimal(300),
-            BikeType.MTB, new BigDecimal(200),
-            BikeType.TREKKING, new BigDecimal(100),
-            BikeType.CITY, new BigDecimal(100)
+    @Id
+    @GeneratedValue
+    @NotNull
+    @Column(name = "PRICE_LIST_ID", unique = true)
+    private Long id;
 
-    );
+    @Column(name = "RACING_PRICE")
+    private BigDecimal racingPrice;
+    @Column(name = "MTB_PRICE")
+    private BigDecimal mtbPrice;
+    @Column(name = "TREKKING_PRICE")
+    private BigDecimal trekkingPrice;
+    @Column(name = "CITY_PRICE")
+    private BigDecimal cityPrice;
 
-    private static Map<BikeType, BigDecimal> casualBikePrices = Map.of(
-            BikeType.RACING, new BigDecimal(150),
-            BikeType.MTB, new BigDecimal(100),
-            BikeType.TREKKING, new BigDecimal(50),
-            BikeType.CITY, new BigDecimal(50)
-    );
+    public PriceList(BigDecimal racingPrice, BigDecimal mtbPrice, BigDecimal trekkingPrice, BigDecimal cityPrice) {
+        this.racingPrice = racingPrice;
+        this.mtbPrice = mtbPrice;
+        this.trekkingPrice = trekkingPrice;
+        this.cityPrice = cityPrice;
+    }
+
+    @OneToMany(
+            targetEntity = Bike.class,
+            mappedBy = "priceList",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+    private List<Bike> bikes;
 }

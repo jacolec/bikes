@@ -1,4 +1,4 @@
-package com.kodilla.bikes;
+package com.kodilla.application;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
