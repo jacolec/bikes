@@ -1,6 +1,7 @@
 package com.kodilla.bikes;
 
 import com.google.gson.Gson;
+import com.kodilla.exception.BikeNotFoundException;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ class BikeControllerTest {
     }
 
     @Test
-    void testGetBike() throws Exception {
+    void testGetBike() throws BikeNotFoundException, Exception {
         //Given
         Bike bike = new Bike(1L, "racing", 21);
         BikeDto bikeDto = new BikeDto(1L, "racing", 21);
