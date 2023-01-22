@@ -40,6 +40,12 @@ public class Bike {
         this.size = size;
     }
 
+    public Bike(Long id, String type, int size) {
+        this.id = id;
+        this.type = type;
+        this.size = size;
+    }
+
     @ManyToOne
     @JoinColumn(name = "PRICE_LIST_ID")
     private PriceList priceList;

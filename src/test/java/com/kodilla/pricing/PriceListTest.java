@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-class PriceListTestSuite {
+class PriceListTest {
 
     private PriceListRepository priceListRepository;
 

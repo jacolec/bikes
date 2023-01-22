@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-class RentTestPriceListTestSuite {
+class RentTest {
 
     private RentRepository rentRepository;
     private UserRepository userRepository;
