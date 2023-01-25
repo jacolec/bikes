@@ -62,7 +62,7 @@ class BikeControllerTest {
     }
 
     @Test
-    void testDeleteBike() throws Exception {
+    void testDeleteBike() throws BikeNotFoundException, Exception {
         //Given
         Bike bike = new Bike(1L, "racing", 21);
         when(bikeService.saveBike(any())).thenReturn(bike);
@@ -92,7 +92,7 @@ class BikeControllerTest {
     }
 
     @Test
-    void testUpdateBike() throws Exception {
+    void testUpdateBike() throws BikeNotFoundException, Exception {
         //Given
         Bike bike = new Bike(1L, "racing", 21);
         BikeDto bikeDto = new BikeDto(1L, "racing", 21);

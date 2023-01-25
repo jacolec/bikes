@@ -1,5 +1,7 @@
 package com.kodilla.bikes;
 
+import com.kodilla.exception.BikeNotFoundException;
+import com.kodilla.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +24,12 @@ public class BikeController {
         return ResponseEntity.ok(bikeMapper.mapToBikeListDto(bikes));
     }
     @GetMapping(value = "{bikeId}")
-    public ResponseEntity<BikeDto> getBike(@PathVariable Long bikeId) {
+    public ResponseEntity<BikeDto> getBike(@PathVariable Long bikeId) throws BikeNotFoundException {
         return ResponseEntity.ok(bikeMapper.mapToBikeDto(bikeService.getBike(bikeId)));
     }
 
     @DeleteMapping(value = "{bikeId}")
-    public ResponseEntity<Void> deleteBike(@PathVariable Long bikeId) {
+    public ResponseEntity<Void> deleteBike(@PathVariable Long bikeId) throws BikeNotFoundException {
         bikeService.deleteBike(bikeService.getBike(bikeId).getId());
         return ResponseEntity.ok().build();
     }

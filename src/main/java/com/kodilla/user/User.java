@@ -44,4 +44,12 @@ public class User {
         this.mail = mail;
         this.phone = phone;
     }
+
+    public User(Long id, String firstname, String lastname, String mail, int phone) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.mail = mail;
+        this.phone = phone;
+    }
 }
