@@ -18,4 +18,9 @@ public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleUserNotFoundException(UserNotFoundException exception) {
         return new ResponseEntity<>("User not found!", HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(PriceListNotFoundException.class)
+    public ResponseEntity<Object> handlePriceListNotFoundException(PriceListNotFoundException exception) {
+        return new ResponseEntity<>("Price list not found!", HttpStatus.NOT_FOUND);
+    }
 }

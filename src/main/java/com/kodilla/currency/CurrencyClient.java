@@ -14,7 +14,7 @@ public class CurrencyClient {
     private final RestTemplate restTemplate;
     private final CurrencyConfig currencyConfig;
 
-    public String getDollarRate() {
+    public CurrencyDto getDollarRate() {
 
         URI url = UriComponentsBuilder
                 .fromHttpUrl(currencyConfig.getCurrencyApiEndPoint() + currencyConfig.getDollar())
@@ -22,11 +22,11 @@ public class CurrencyClient {
                 .encode()
                 .toUri();
 
-        String dollar = restTemplate.getForObject(url, String.class);
+        CurrencyDto dollar = restTemplate.getForObject(url, CurrencyDto.class);
         return dollar;
     }
 
-    public String getEuroRate() {
+    public CurrencyDto getEuroRate() {
 
         URI url = UriComponentsBuilder
                 .fromHttpUrl(currencyConfig.getCurrencyApiEndPoint() + currencyConfig.getEuro())
@@ -34,7 +34,7 @@ public class CurrencyClient {
                 .encode()
                 .toUri();
 
-        String euro = restTemplate.getForObject(url, String.class);
+        CurrencyDto euro = restTemplate.getForObject(url, CurrencyDto.class);
         return euro;
     }
 
